@@ -1,6 +1,6 @@
 
 
-const Form = ({ value, handleChange, handleSubmit }) => {
+const Form = ({ value, handleChange, handleSubmit, info, reset }) => {
 
 
 
@@ -8,9 +8,7 @@ const Form = ({ value, handleChange, handleSubmit }) => {
 
         <>
             <div className="container" style={{
-                'margin-top': '60px',
-
-
+                'margin-top': '60px'
             }}>
                 <div className="row">
                     <div className="col-md-6">
@@ -24,7 +22,7 @@ const Form = ({ value, handleChange, handleSubmit }) => {
                                 <h3 className="heading"><b><i className="fa fa-users"></i> Login Aplikasi</b></h3>
                             </div>
                             <div className="card-body" style={{ 'magin-right': '12px' }}>
-
+                                {info}
                                 <form action="" className="form-horizontal" method="POST" onSubmit={handleSubmit}>
                                     <div className="form-group row">
                                         <label className="col-md-3 label"><b>Username</b></label>
@@ -45,7 +43,7 @@ const Form = ({ value, handleChange, handleSubmit }) => {
                                         <div className="col-md-8">
                                             <button className="btn btn-primary btn-md" type="submit"><i className="fa fa-save"></i> Login</button>
                                             &nbsp; &nbsp;
-                                            <button className="btn btn-warning btn-md" type="reset"><i className="fa fa-save"></i> Reset</button>
+                                            <button className="btn btn-warning btn-md" type="reset" onClick={reset}><i className="fa fa-save"></i> Reset</button>
                                         </div>
                                     </div>
 

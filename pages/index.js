@@ -13,15 +13,10 @@ export default function Home() {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (value.username == 'admin' && value.password == '123') {
-      setInfo(<>
-        <div className='alert alert-info'> Login Berhasil</div>
-      </>)
+      setInfo(<div className='alert alert-info'>{'username dan password salah'}</div>)
       Router.push('admin/dashboard')
     } else {
-      setInfo(<>
-
-        <div className='alert alert-info'> Login gagal</div>
-      </>)
+      setInfo(<div className='alert alert-info'>{'username dan password salah'}</div>)
     }
 
   }
@@ -33,10 +28,13 @@ export default function Home() {
     })
   }
 
-  return (
-    <>
-      {info}
-      <Form value={value} handleChange={handleChange} handleSubmit={handleSubmit}></Form>
-    </>
-  )
+  const reset = () => {
+    setInfo('')
+    setValue({
+      username: '',
+      password: ''
+    })
+  }
+
+  return (<Form value={value} handleChange={handleChange} handleSubmit={handleSubmit} info={info} reset={reset}></Form>)
 }
