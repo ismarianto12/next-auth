@@ -10,31 +10,47 @@ export default function Home() {
     password: ''
   })
   const [info, setInfo] = useState('')
+  const [error, setError] = useState(false)
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (value.username == 'admin' && value.password == '123') {
-      setInfo(<div className='alert alert-info'>{'username dan password salah'}</div>)
-      Router.push('admin/dashboard')
+    if (value.username != '' && value.password != '') {
+      if (value.username == 'admin' && value.password == '123') {
+        setInfo(<div className='alert alert-info'>{'username dan password salah'}</div>)
+        Router.push('admin/dashboard')
+      } else {
+        setInfo(<div className='alert alert-warning'>{'username dan password salah'}</div>)
+      }
     } else {
-      setInfo(<div className='alert alert-info'>{'username dan password salah'}</div>)
+      setError(true)
+      setInfo('')
     }
-
   }
 
   const handleChange = (e) => {
+    setError(true)
     setValue({
       ...value,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     })
   }
 
   const reset = () => {
     setInfo('')
+    setError(false)
+
     setValue({
       username: '',
       password: ''
     })
   }
 
-  return (<Form value={value} handleChange={handleChange} handleSubmit={handleSubmit} info={info} reset={reset}></Form>)
+  return (
+    <>
+      <Head>
+        <title>Login Aplikasi</title>
+      </Head>
+      <Form value={value} handleChange={handleChange} handleSubmit={handleSubmit} info={info} reset={reset} error={error}></Form>
+    </>
+  )
 }
