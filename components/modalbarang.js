@@ -1,13 +1,13 @@
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap'
 import React, { useState, Component, useRef } from "react"
 
 class ModalBarang extends React.Component {
 
     constructor(props) {
         super(props)
-        this.imageRef = React.createRef();
+        this.imageRef = React.createRef()
         this.state = {
-            show: false,
+            show: true,
             change: true
         }
     } 
@@ -21,10 +21,10 @@ class ModalBarang extends React.Component {
     render() {
         return (<>
             <Modal
-                show={this.props.show ? this.props.show : this.state.show}
+                show={this.state.show}
                 onClick={this.closeModal}
                 onHide={this.closeModal}
-                dialogClassName="modal-90w"
+                dialogClassName="modal-290w"
                 aria-labelledby="example-custom-modal-styling-title"
             >
                 <Modal.Header closeButton>

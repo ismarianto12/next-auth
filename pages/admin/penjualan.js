@@ -13,6 +13,7 @@ const Penjualan = () => {
     return (<>
 
         <Template container={<>
+         
             <ModalBarang show={show} />
 
             <div className="container">
