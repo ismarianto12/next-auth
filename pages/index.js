@@ -4,6 +4,7 @@ import Form from '../components/form'
 import styles from '../styles/Home.module.css'
 import { useState } from 'react'
 import Router from 'next/router'
+
 export default function Home() {
   const [value, setValue] = useState({
     username: '',
@@ -16,7 +17,10 @@ export default function Home() {
     e.preventDefault()
     if (value.username != '' && value.password != '') {
       if (value.username == 'admin' && value.password == '123') {
-        setInfo(<div className='alert alert-info'>{'username dan password salah'}</div>)
+        setInfo(<div className='alert alert-info'>{'username dan password benar'}</div>)
+        localStorage.setItem('username', value.username);
+
+        // setCookies('test', 'value', { req, res, maxAge: 60 * 6 * 24 });
         Router.push('admin/dashboard')
       } else {
         setInfo(<div className='alert alert-warning'>{'username dan password salah'}</div>)
